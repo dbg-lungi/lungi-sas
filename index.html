@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Lungi SAS — Análisis editorial y consultoría en coyuntura política. Rigor metodológico y lectura contextual para decisiones editoriales." />
+  <title>Lungi SAS</title>
+
+  <!-- Google Fonts (gratis) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- Variables de marca (paleta del logo oficial) ---------- */
+    :root {
+      --color-dark: #3a3a00;        /* Olive más oscuro */
+      --color-primary: #4F4F00;     /* Olive oficial del logo LUNGI SAS */
+      --color-secondary: #6b6b2e;   /* Olive medio */
+      --color-accent: #8b8b50;      /* Olive gris */
+      --color-bg: #ffffff;
+      --color-surface: #f7f7f0;     /* Beige muy claro */
+      --color-text: #1a1a1a;
+      --color-muted: #6b6b6b;
+      --color-border: #e8e8dd;
+      --radius: 2px;
+      --max-width: 1100px;
+      --font-serif: 'Playfair Display', Cambria, Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    /* ---------- Reset & base ---------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--color-text);
+      background: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    h1, h2, h3 {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      line-height: 1.2;
+      margin: 0 0 0.5em;
+      color: var(--color-primary);
+      letter-spacing: -0.01em;
+    }
+    p { margin: 0 0 1em; color: var(--color-muted); }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ---------- Header ---------- */
+    header {
+      background: var(--color-bg);
+      padding: 2rem 0 1rem;
+    }
+    .brand {
+      text-align: center;
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 2.5rem;
+      letter-spacing: 0.06em;
+      color: var(--color-primary);
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      height: 520px;
+      background-image: linear-gradient(rgba(58,58,0,0.55), rgba(58,58,0,0.70)),
+                        url('https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      padding: 2rem 1.5rem;
+    }
+    .hero-tagline {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: clamp(1.125rem, 2.2vw, 1.5rem);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: white;
+      max-width: 820px;
+      line-height: 1.5;
+    }
+    .hero-tagline em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      text-transform: lowercase;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: rgba(255,255,255,0.95);
+    }
+
+    /* ---------- Sections ---------- */
+    section { padding: 6rem 0; }
+    .section-head {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .eyebrow {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      padding: 0.35rem 0.9rem;
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+    .section-title {
+      font-size: clamp(1.875rem, 4vw, 2.75rem);
+      font-weight: 400;
+      color: var(--color-primary);
+    }
+
+    /* ---------- Servicios ---------- */
+    #servicios { background: var(--color-surface); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .service-card {
+      background: white;
+      padding: 2.25rem 1.75rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      transition: border-color 0.25s ease, transform 0.25s ease;
+    }
+    .service-card:hover {
+      border-color: var(--color-accent);
+      transform: translateY(-2px);
+    }
+    .service-number {
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      font-weight: 400;
+      color: var(--color-primary);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.02em;
+    }
+    .service-title {
+      font-family: var(--font-sans);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      margin-bottom: 0.75rem;
+    }
+    .service-card p {
+      font-size: 0.875rem;
+      line-height: 1.65;
+      color: var(--color-muted);
+      margin: 0;
+    }
+    @media (max-width: 820px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card { padding: 1.75rem 1.5rem; }
+    }
+
+    /* ---------- Contacto ---------- */
+    #contacto {
+      background: white;
+      padding: 5rem 0 6rem;
+    }
+    .contact-wrap {
+      max-width: 580px;
+      margin: 0 auto;
+    }
+    .field { margin-bottom: 1.25rem; }
+    label {
+      display: block;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--color-text);
+      margin-bottom: 0.35rem;
+    }
+    label .required {
+      color: var(--color-muted);
+      font-weight: 400;
+      font-size: 0.75rem;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 0.7rem 0.875rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      font-family: var(--font-sans);
+      font-size: 0.9375rem;
+      color: var(--color-text);
+      background: white;
+      transition: border-color 0.15s ease;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--color-primary);
+    }
+    textarea { resize: vertical; min-height: 130px; }
+    .btn-submit {
+      background: var(--color-primary);
+      color: white;
+      border: none;
+      padding: 0.7rem 1.75rem;
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: 0.875rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background 0.2s ease;
+      letter-spacing: 0.02em;
+    }
+    .btn-submit:hover { background: var(--color-dark); }
+
+    /* ---------- Footer ---------- */
+    footer {
+      background: white;
+      border-top: 1px solid var(--color-border);
+      padding: 2rem 0;
+      text-align: center;
+      font-size: 0.8125rem;
+      color: var(--color-muted);
+    }
+    .footer-contact {
+      font-style: italic;
+      margin-bottom: 0.5rem;
+      color: var(--color-secondary);
+    }
+    .footer-legal {
+      font-size: 0.75rem;
+      color: var(--color-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============== HEADER ============== -->
+  <header>
+    <div class="container">
+      <!-- Logo oficial: texto "LUNGI SAS" en color olive #4F4F00 (tal como aparece en la carta institucional) -->
+      <div class="brand">LUNGI SAS</div>
+    </div>
+  </header>
+
+  <!-- ============== HERO ============== -->
+  <section class="hero">
+    <div class="hero-tagline">
+      Navegando <em>el</em> futuro <em>del</em> contenido <em>y la</em> comunicación
+    </div>
+  </section>
+
+  <!-- ============== SERVICIOS ============== -->
+  <section id="servicios">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Cómo trabajamos</span>
+        <h2 class="section-title">Servicios</h2>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-number">01</div>
+          <div class="service-title">Análisis de Contenidos</div>
+          <p>Investigación rigurosa y lectura contextual sobre temas políticos, editoriales y culturales, convertidos en documentos sólidos, verificables y accionables para nuestros clientes.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-number">02</div>
+          <div class="service-title">Estrategia de Contenidos</div>
+          <p>Diseñamos estrategias editoriales y de comunicación a la medida de cada cliente, combinando claridad de mensaje y conocimiento del competitivo entorno de los medios y el entretenimiento.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-number">03</div>
+          <div class="service-title">Consultoría en Medios y Talento</div>
+          <p>Acompañamos proyectos de medios y la gestión de talento artístico con un enfoque integral y diferencial, aportando experiencia en producción, representación y desarrollo de carrera.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== CONTACTO ============== -->
+  <section id="contacto">
+    <div class="container">
+      <div class="contact-wrap">
+        <!--
+          FORMULARIO CON FORMSPREE (GRATIS - hasta 50 mensajes/mes)
+          1. Crea una cuenta en https://formspree.io
+          2. Crea un nuevo formulario y copia tu código
+          3. Reemplaza TU_CODIGO_FORMSPREE abajo por tu código real
+        -->
+        <form action="https://formspree.io/f/TU_CODIGO_FORMSPREE" method="POST">
+          <div class="field">
+            <label for="nombre">Nombre <span class="required">(requerido)</span></label>
+            <input type="text" id="nombre" name="nombre" required />
+          </div>
+          <div class="field">
+            <label for="email">Correo <span class="required">(requerido)</span></label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="field">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje"></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Contáctanos</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FOOTER ============== -->
+  <footer>
+    <div class="container">
+      <div class="footer-contact">
+        Carrera 1 Este No 77-81 &middot; Bogotá D.C., Colombia &middot; Tel: +57 313 476 2877
+      </div>
+      <div class="footer-legal">
+        &copy; <span id="year"></span> LUNGI S.A.S. &middot; NIT 900.425.707-8
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
